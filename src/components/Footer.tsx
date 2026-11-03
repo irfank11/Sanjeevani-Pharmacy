@@ -24,7 +24,7 @@ export default function Footer() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-mint-400 to-mint-600 flex items-center justify-center">
                 <Eye className="w-4 h-4 text-white" />
               </div>
-              <span className="font-serif font-bold text-lg" style={{ color: 'var(--text-primary)' }}>Sanjeevani</span>
+              <span className="font-serif font-bold text-lg" style={{ color: 'var(--text-primary)' }}>Sanjeevani Pharmacy</span>
             </div>
             <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>
               Weekly visiting eye consultation clinic. Dr. Tanveer Alam Khan, MD (Ophthalmology), AIIMS New Delhi.

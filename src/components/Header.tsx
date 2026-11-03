@@ -24,9 +24,17 @@ export default function Header() {
     <>
       {/* Sunday hours top bar */}
       <div className="no-print bg-gradient-to-r from-mint-600 to-mint-700 text-white text-center py-1.5 text-sm font-medium">
-        <span className="inline-flex items-center gap-2">
-          <span className="inline-block w-2 h-2 bg-lime-300 rounded-full animate-pulse"></span>
-          {settings.timingsText} — {settings.clinicName}, Parbatsar
+        <span className="inline-flex items-center gap-2 flex-wrap justify-center">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="inline-block w-2 h-2 bg-lime-300 rounded-full animate-pulse"></span>
+            {settings.timingsText} — {settings.clinicName}, Parbatsar
+          </span>
+          {settings.phone && (
+            <span className="hidden sm:inline-flex items-center gap-1 ml-2">
+              <span className="opacity-60">|</span>
+              📞 +91 {settings.phone}
+            </span>
+          )}
         </span>
       </div>
 
@@ -39,7 +47,7 @@ export default function Header() {
                 <Eye className="w-5 h-5 text-white" />
               </div>
               <div className="hidden sm:block">
-                <div className="font-serif font-bold text-lg leading-tight" style={{ color: 'var(--text-primary)' }}>Sanjeevani</div>
+                <div className="font-serif font-bold text-lg leading-tight" style={{ color: 'var(--text-primary)' }}>Sanjeevani Pharmacy</div>
                 <div className="text-xs leading-tight" style={{ color: 'var(--text-muted)' }}>Eye Care Consultation</div>
               </div>
             </Link>

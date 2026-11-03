@@ -172,15 +172,29 @@ export default function Contact() {
                 {/* Map */}
                 <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border-color)' }}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.5!2d74.0!3d26.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDM2JzAwLjAiTiA3NMKwMDAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
+                    src="https://www.google.com/maps?q=26.53,74.46&z=15&output=embed"
                     width="100%"
                     height="200"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
-                    title="Clinic Location"
+                    title="Sanjeevani Pharmacy Location - Parbatsar, Nagaur, Rajasthan"
                   />
                 </div>
+
+                {/* Phone - only if configured */}
+                {settings.phone && (
+                  <a
+                    href={`tel:+91${settings.phone}`}
+                    className="flex items-center gap-3 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                  >
+                    <span className="text-2xl">📞</span>
+                    <div>
+                      <p className="font-medium text-sm text-blue-700 dark:text-blue-300">Call Us</p>
+                      <p className="text-xs text-blue-600 dark:text-blue-400">+91 {settings.phone}</p>
+                    </div>
+                  </a>
+                )}
 
                 {/* WhatsApp - only if configured */}
                 {settings.whatsapp && (
@@ -193,7 +207,7 @@ export default function Contact() {
                     <span className="text-2xl">💬</span>
                     <div>
                       <p className="font-medium text-sm text-green-700 dark:text-green-300">Chat on WhatsApp</p>
-                      <p className="text-xs text-green-600 dark:text-green-400">Quick response during consultation hours</p>
+                      <p className="text-xs text-green-600 dark:text-green-400">+91 {settings.whatsapp}</p>
                     </div>
                   </a>
                 )}

@@ -333,8 +333,9 @@ export default function Admin() {
                   { label: 'Clinic Name', value: settings.clinicName },
                   { label: 'Address', value: settings.address },
                   { label: 'Timings', value: settings.timingsText },
-                  { label: 'Phone', value: settings.phone || '(not set)' },
-                  { label: 'WhatsApp', value: settings.whatsapp || '(not set)' },
+                  { label: 'Consultation Fee', value: `₹${settings.fee}` },
+                  { label: 'Phone', value: settings.phone ? `+91 ${settings.phone}` : '(not set)' },
+                  { label: 'WhatsApp', value: settings.whatsapp ? `+91 ${settings.whatsapp}` : '(not set)' },
                 ].map(field => (
                   <div key={field.label} className="flex items-center justify-between py-2 border-b" style={{ borderColor: 'var(--border-color)' }}>
                     <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>{field.label}</span>

@@ -123,13 +123,13 @@ export default function About() {
                 </h3>
                 <div className="space-y-3">
                   <a
-                    href="https://www.centreforsight.net/doctor/dr-tanveer-alam-khan"
+                    href="https://khungereyecfs.com/dr-tanveer-alam-khan/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-mint-600 dark:text-mint-400 hover:underline"
                   >
                     <ExternalLink className="w-3 h-3" />
-                    Centre For Sight — Doctor Profile
+                    Dr. Khunger's Eye Care Centre — Doctor Profile
                   </a>
                   <a
                     href="https://khungereyecfs.com/doctors/"
