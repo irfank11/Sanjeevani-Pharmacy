@@ -11,9 +11,11 @@ export const business = {
     addressCountry: 'IN',
   },
   geo: {
-    latitude: '26.53',
-    longitude: '74.46',
+    latitude: '26.8869721',
+    longitude: '74.7656376',
   },
+  mapsEmbedUrl: 'https://www.google.com/maps?q=26.8869721,74.7656376&z=17&output=embed',
+  directionsUrl: 'https://www.google.com/maps/dir//Sanjeevani+pharmacy,+Parbatsar,+Ghandi+chowk,+harsore+road,+Parvatsar,+Rajasthan+341512/@26.877712,74.757113,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x396b91bd4e3929fd:0xc5aae8074d59a8b7!2m2!1d74.7656376!2d26.8869721?entry=ttu&g_ep=EgoyMDI2MTEwMS4wIKXMDSoASAFQAw%3D%3D',
 } as const;
 
 interface PageMetadata {
@@ -80,6 +82,18 @@ function setMeta(attribute: 'name' | 'property', key: string, content: string) {
   element.content = content;
 }
 
+function updateStoreMapLocation() {
+  document.querySelectorAll<HTMLIFrameElement>('iframe[title^="Sanjeevani Pharmacy Location"]').forEach((map) => {
+    map.src = business.mapsEmbedUrl;
+  });
+
+  const directionsLink = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[href*="google.com/maps"]'))
+    .find((link) => link.textContent?.includes('Open in Google Maps'));
+  if (directionsLink) {
+    directionsLink.href = business.directionsUrl;
+  }
+}
+
 export function updatePageMetadata(pathname: string) {
   const normalizedPath = pathname || '/';
   const page = pageMetadata[normalizedPath] ?? {
@@ -110,6 +124,8 @@ export function updatePageMetadata(pathname: string) {
   if (!canonical.parentNode) {
     document.head.appendChild(canonical);
   }
+
+  updateStoreMapLocation();
 
   const structuredDataId = 'sanjeevani-local-business-schema';
   const structuredData = document.getElementById(structuredDataId) as HTMLScriptElement | null;
