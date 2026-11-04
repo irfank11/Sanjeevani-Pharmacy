@@ -4,6 +4,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { AppProvider } from './context/AppContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import SeoMetadata from './components/SeoMetadata';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -27,7 +28,7 @@ function ScrollToTop() {
 function MobileBookBar() {
   const location = useLocation();
   if (location.pathname === '/book' || location.pathname === '/admin') return null;
-  
+
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 p-3 no-print sm:hidden" style={{ background: 'linear-gradient(to top, var(--bg-primary) 80%, transparent)' }}>
       <div className="flex gap-2">
@@ -54,7 +55,7 @@ function MobileBookBar() {
 function FloatingWhatsApp() {
   const location = useLocation();
   if (location.pathname === '/admin') return null;
-  
+
   return (
     <a
       href="https://wa.me/919024244193"
@@ -65,9 +66,19 @@ function FloatingWhatsApp() {
       aria-label="Chat on WhatsApp"
     >
       <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.76-1.48-1.76-.25-.49-.027-.76.188-.965.193-.182.43-.474.645-.71.215-.237.287-.398.43-.664.143-.267.072-.5-.036-.7-.108-.2-.97-2.34-1.33-3.2-.35-.84-.71-.72-.97-.73-.25-.01-.54-.01-.83-.01-.29 0-.76.11-1.16.55-.4.44-1.52 1.49-1.52 3.63s1.56 4.21 1.78 4.5c.22.3 3.07 4.69 7.44 6.58 1.04.45 1.85.71 2.48.91 1.04.33 1.99.28 2.74.17.84-.13 2.59-1.06 2.96-2.08.36-1.02.36-1.89.25-2.07-.11-.18-.4-.29-.83-.5z" />
       </svg>
     </a>
+  );
+}
+
+function NotFound() {
+  return (
+    <section className="min-h-[60vh] flex flex-col items-center justify-center px-4 text-center" style={{ backgroundColor: 'var(--bg-primary)' }}>
+      <h1 className="font-serif text-4xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>Page not found</h1>
+      <p className="mb-6" style={{ color: 'var(--text-secondary)' }}>The page you requested could not be found.</p>
+      <Link to="/" className="btn-primary">Return to Sanjeevani Pharmacy</Link>
+    </section>
   );
 }
 
@@ -93,6 +104,7 @@ function AppLayout() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/refund" element={<RefundPolicy />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
@@ -107,6 +119,7 @@ export default function App() {
     <ThemeProvider>
       <AppProvider>
         <BrowserRouter>
+          <SeoMetadata />
           <Routes>
             <Route path="/admin" element={<Admin />} />
             <Route path="/*" element={<AppLayout />} />
